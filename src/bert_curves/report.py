@@ -79,6 +79,8 @@ def generate_report(folder):
         return f"{value:.{places}f}".replace(".", ",")
     story = [
         Paragraph("Curvas de aprendizado com DistilBERT", styles["Title"]),
+        p("Thiago Penha e Henrique Turco",
+          ParagraphStyle(name="AuthorsPT", parent=body, alignment=1, spaceAfter=10)),
         p(f"<b>{cfg['dataset'].upper()}</b> | Treino: {', '.join(map(str, cfg['sizes']))} exemplos | "
           f"Teste fixo: {manifest['evaluated_test_size']} textos<br/>"
           f"{len(cfg['seeds'])} sementes; {cfg['epochs']} épocas; "
@@ -134,7 +136,8 @@ def generate_report(folder):
         canvas.drawString(2*cm, 1.2*cm, "NLP | Resultados observados")
         canvas.drawRightString(19*cm, 1.2*cm, str(doc.page))
     SimpleDocTemplate(
-        str(out / "relatorio.pdf"), pagesize=(21*cm,29.7*cm),
+        str(out / "relatorio.pdf"), author="Thiago Penha e Henrique Turco",
+        title="Curvas de aprendizado com DistilBERT", pagesize=(21*cm,29.7*cm),
         leftMargin=2*cm, rightMargin=2*cm, topMargin=1.5*cm,
         bottomMargin=1.8*cm,
     ).build(story, onFirstPage=footer, onLaterPages=footer)
