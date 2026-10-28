@@ -1,0 +1,25 @@
+{
+  "dataset": "imdb",
+  "model_id": "distilbert/distilbert-base-uncased",
+  "model_revision": "main",
+  "sizes": [
+    50,
+    100,
+    200
+  ],
+  "seeds": [
+    42,
+    43
+  ],
+  "test_size": 200,
+  "test_seed": 2026,
+  "epochs": 2,
+  "batch_size": 8,
+  "max_length": 64,
+  "learning_rate": 0.00002,
+  "scratch_learning_rate": 0.0002,
+  "head_learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "threads": 4,
+  "device": "auto"
+}
