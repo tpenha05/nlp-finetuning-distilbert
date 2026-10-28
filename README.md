@@ -13,6 +13,23 @@ Compara, em **um único gráfico**, quatro estratégias de classificação de se
 
 O código gera CSVs, PNG, gráfico vetorial e **PDF com resultados e interpretação**. O bônus com AG News também está implementado, mas precisa de uma execução própria.
 
+## Resultados executados
+
+Foram concluídos **24 treinamentos reais** no IMDb: quatro métodos, três tamanhos e duas sementes. Esta é a configuração rápida, com teste fixo de 200 textos, duas épocas e limite de 64 tokens nos Transformers.
+
+![Quatro curvas de aprendizado](results/imdb_quick/learning_curves.png)
+
+| Método | Acurácia média em n=200 |
+|---|---:|
+| BoW + regressão logística | 0.6375 |
+| DistilBERT do zero | 0.5000 |
+| DistilBERT congelado | 0.6250 |
+| DistilBERT fine-tuning | 0.7225 |
+
+[Relatório PDF com análise](results/imdb_quick/relatorio.pdf) · [Medições individuais](results/imdb_quick/metrics.csv) · [Resumo](results/imdb_quick/summary.csv) · [Manifesto](results/imdb_quick/manifest.json)
+
+Neste orçamento, o fine-tuning cresceu mais e obteve a maior média. O encoder aleatório permaneceu em 0,50 de acurácia, mostrando a dificuldade de aprender essa representação em apenas duas épocas com poucos rótulos. As duas sementes e o teste reduzido limitam as conclusões; não se trata de uma comparação de desempenhos máximos. Os testes locais e a primeira execução do GitHub Actions passaram.
+
 ## Execução local
 
 Python 3.10 ou superior. GPU CUDA é recomendada para o experimento completo. O código usa CPU automaticamente quando CUDA não está disponível. O primeiro uso baixa os pesos de `distilbert/distilbert-base-uncased` e os splits oficiais do dataset; reserve alguns GB de disco e memória.

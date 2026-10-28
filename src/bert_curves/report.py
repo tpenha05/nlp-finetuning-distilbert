@@ -55,10 +55,10 @@ def generate_report(folder):
                         color=COLORS[model], alpha=.13)
     ax.set(xlabel="Número de exemplos de treinamento", ylabel="Acurácia no teste",
            title=f"Curvas de aprendizado | {cfg['dataset'].upper()}", ylim=(0, 1))
-    ax.set_xticks(cfg["sizes"])
     if max(cfg["sizes"]) / min(cfg["sizes"]) > 10:
         ax.set_xscale("log")
-        ax.set_xticklabels(cfg["sizes"])
+    ax.set_xticks(cfg["sizes"])
+    ax.set_xticklabels(cfg["sizes"])
     ax.grid(axis="y", alpha=.18)
     ax.legend(loc="lower right", fontsize=9, frameon=False)
     fig.savefig(out / "learning_curves.png", dpi=200)

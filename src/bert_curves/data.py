@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 DATASETS = {"imdb": ("stanfordnlp/imdb", "plain_text"),
-            "ag_news": ("fancyzhx/ag_news", "default")}
+            "ag_news": ("fancyzhx/ag_news", "data")}
 
 
 def load_data(dataset, cache_dir="data"):
